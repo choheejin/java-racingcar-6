@@ -26,4 +26,8 @@ public class Cars {
                 .map(Car::getName)
                 .toList();
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
