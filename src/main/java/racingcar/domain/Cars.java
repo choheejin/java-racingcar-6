@@ -9,4 +9,21 @@ public class Cars {
         this.cars = cars;
     }
 
+    private Car findMaxPosition() {
+        return cars.stream()
+                .max(Car::compareTo)
+                .orElseThrow();
+    }
+
+    private List<Car> findWinner(Car maxPosition) {
+        return cars.stream()
+                .filter(maxPosition::isSamePosition)
+                .toList();
+    }
+
+    public List<String> getWinner(List<Car> cars) {
+        return cars.stream()
+                .map(Car::getName)
+                .toList();
+    }
 }
