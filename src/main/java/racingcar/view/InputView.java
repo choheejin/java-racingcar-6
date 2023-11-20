@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.view.consts.InputMessage;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class InputView {
     private static final String FORMAT = ",";
@@ -15,6 +17,7 @@ public class InputView {
         String input = Console.readLine().trim();
         validateNone(input);
         validateFormat(input);
+        validateDuplicate(input);
         return Arrays.stream(input.split(FORMAT, -1)).toList();
     }
 
@@ -50,6 +53,15 @@ public class InputView {
         }
 
         if (inputs.stream().anyMatch(i -> !i.equals(i.trim()))) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicate(String input) throws IllegalArgumentException {
+        List<String> inputs = Arrays.stream(input.split(FORMAT, -1)).toList();
+        Set<String> inputsDeduplicate = new HashSet<>(inputs);
+
+        if(inputs.size() != inputsDeduplicate.size()) {
             throw new IllegalArgumentException();
         }
     }
