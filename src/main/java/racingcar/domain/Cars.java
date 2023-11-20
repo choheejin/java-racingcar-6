@@ -21,7 +21,9 @@ public class Cars {
                 .toList();
     }
 
-    public List<String> getWinner(List<Car> cars) {
+    public List<String> getWinner() {
+        Car maxPosition = findMaxPosition();
+        List<Car> cars = findWinner(maxPosition);
         return cars.stream()
                 .map(Car::getName)
                 .toList();

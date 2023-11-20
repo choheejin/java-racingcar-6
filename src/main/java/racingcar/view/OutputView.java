@@ -1,17 +1,19 @@
 package racingcar.view;
 
-import racingcar.domain.Cars;
+import racingcar.domain.Car;
 import racingcar.view.consts.OutputMessage;
 
 import java.util.List;
 
 public class OutputView {
-    public void displayRacing(Cars cars) {
-        cars.getCars().forEach(car -> {
+    public void displayRacing(List<Car> cars) {
+        cars.forEach(car -> {
             System.out.printf(OutputMessage.CAR_NAME.getMessage(), car.getName());
-            System.out.printf(OutputMessage.POSITION.getMessage().repeat(car.getPosition()));
+            System.out.println(OutputMessage.POSITION.getMessage().repeat(car.getPosition()));
         });
+        System.out.println();
     }
+
     public void displayWinner(List<String> winners) {
         String output = String.join(",", winners);
         System.out.println(output);
