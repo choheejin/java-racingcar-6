@@ -33,6 +33,7 @@ public class GameManager {
     }
 
     private Cars move(List<Car> cars, int number) {
+        outputView.displayRacingTittle();
         for (int i = 0; i < number; i++) {
             for (Car car : cars) {
                 int random = Randoms.pickNumberInRange(0, 9);
