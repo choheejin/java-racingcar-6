@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.view.consts.InputMessage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +11,7 @@ public class InputView {
     private static final String R_NUMBER = "^[\\d]*$";
 
     public List<String> readName() throws IllegalArgumentException {
+        System.out.println(InputMessage.NAME.getMessage());
         String input = Console.readLine().trim();
         validateNone(input);
         validateFormat(input);
@@ -17,6 +19,7 @@ public class InputView {
     }
 
     public int readCount() throws IllegalArgumentException {
+        System.out.println(InputMessage.COUNT.getMessage());
         String input = Console.readLine().trim();
         validateNone(input);
         validateCount(input);
@@ -24,29 +27,29 @@ public class InputView {
     }
 
     private void validateNone(String input) throws IllegalArgumentException {
-        if(input.isBlank()) {
+        if (input.isBlank()) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateCount(String input) throws IllegalArgumentException {
-        if(!input.matches(R_NUMBER)) {
+        if (!input.matches(R_NUMBER)) {
             throw new IllegalArgumentException();
         }
 
-        if(Integer.parseInt(input) <= 0) {
+        if (Integer.parseInt(input) <= 0) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateFormat(String input) throws IllegalArgumentException{
+    private void validateFormat(String input) throws IllegalArgumentException {
         List<String> inputs = Arrays.stream(input.split(FORMAT, -1)).toList();
 
-        if(inputs.stream().anyMatch(String::isBlank)) {
+        if (inputs.stream().anyMatch(String::isBlank)) {
             throw new IllegalArgumentException();
         }
 
-        if(inputs.stream().anyMatch(i -> !i.equals(i.trim()))) {
+        if (inputs.stream().anyMatch(i -> !i.equals(i.trim()))) {
             throw new IllegalArgumentException();
         }
     }
