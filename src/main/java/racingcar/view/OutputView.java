@@ -19,7 +19,7 @@ public class OutputView {
     }
 
     public void displayWinner(List<String> winners) {
-        String output = String.join(",", winners);
+        String output = String.join(", ", winners);
         System.out.printf(OutputMessage.WINNER.getMessage(), output);
     }
 }
